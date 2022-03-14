@@ -184,6 +184,18 @@ class Sync:
     def _get_user(self, u) -> User:
         tags = []
         is_normal_user = isinstance(u, telethon.tl.types.User)
+        isforbidden = isinstance(u, telethon.tl.types.ChannelForbidden)
+        print(isforbidden)
+        if isforbidden:
+            tags.append("forbidden")
+            return User(
+                id=u.id,
+                username="Forbidden",
+                first_name=None,
+                last_name=None,
+                tags=tags,
+                avatar=None
+            )
 
         if is_normal_user:
             if u.bot:
