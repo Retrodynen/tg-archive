@@ -185,7 +185,6 @@ class Sync:
         tags = []
         is_normal_user = isinstance(u, telethon.tl.types.User)
         isforbidden = isinstance(u, telethon.tl.types.ChannelForbidden)
-        print(isforbidden)
         if isforbidden:
             tags.append("forbidden")
             return User(
